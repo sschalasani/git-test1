@@ -9,8 +9,11 @@ on:
         description: 'Log level'     
         required: true
         default: 'warning'
+
 jobs:
   job1:
+    runs-on:  ubuntu-latest
+
     steps:
     - name: Set up secret file
       run: |
