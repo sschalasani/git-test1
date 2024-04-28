@@ -23,15 +23,15 @@ jobs:
         echo ${{ vars.DEPLOY_TARGET }}
         echo ${{ vars.DEPLOY_TARGET_TYPE }}
 
-#  call-workflow-passing-data:
-#    uses: sschalasani/ci-cd-tools/.github/workflows/develop.yml@develop
-#    with:
-#      config-path: ".github/labeler.yml"
-#      APP_NAME: $APP_NAME
-#      ENV: $ENV_NAME 
-#      DEPLOY_TARGET: $DEPLOY_TARGET
-#      DEPLOY_TARGET_TYPE: $DEPLOY_TARGET_TYPE
-#    secrets: inherit
+  call-workflow-passing-data:
+    uses: sschalasani/ci-cd-tools/.github/workflows/develop.yml@develop
+    with:
+      config-path: ".github/labeler.yml"
+      APP_NAME: ${{ vars.APP_NAME }}
+      ENV: ${{ vars.ENV_NAME  }}
+      DEPLOY_TARGET: ${{ vars.DEPLOY_TARGET }}
+      DEPLOY_TARGET_TYPE: ${{ vars.DEPLOY_TARGET_TYPE }}
+    secrets: inherit
 
 
 
