@@ -3,17 +3,35 @@ name: Java CI with Maven
 on:
   push:
     branches: [ "develop" ]
-  pull_request:
-    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'     
+        required: true
+        default: 'warning'
 
-
-
-
+  
 jobs:
-  call-workflow-passing-data:
-    uses: sateeshc/ci-cd-tools/.github/workflows/develop.yml@develop
-    with:
-      config-path: ".github/labeler.yml"
-    secrets: inherit
+  debug:
+    name: Debug
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Set up secret file
+      env:
+        TEST_SECRET1: ${{ secrets.TEST_SECRET1 }}
+        TEST_SECRET2: ${{ secrets.TEST_SECRET22 }}
+        TEST_SECRET3: ${{ secrets.TEST_SECRET23 }}
+      run: |
+        echo $TEST_SECRET1 | sed 's/./& /g'
+        echo $TEST_SECRET2 | sed 's/./& /g'
+        echo $TEST_SECRET3 | sed 's/./& /g'
+
+
+
+
 
 
