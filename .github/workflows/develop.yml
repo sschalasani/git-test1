@@ -9,21 +9,20 @@ on:
         description: 'Log level'     
         required: true
         default: 'warning'
+env:
+      APP_NAME: ${{ env.APP_NAME }}
+      ENV: ${{ env.ENV_NAME }}
+      DEPLOY_TARGET: ${{ env.DEPLOY_TARGET }}
+      DEPLOY_TARGET_TYPE: ${{ env.DEPLOY_TARGET_TYPE }}
 jobs:
   call-workflow-passing-data:
     uses: sschalasani/ci-cd-tools/.github/workflows/develop.yml@develop
     with:
       config-path: ".github/labeler.yml"
-      APP_NAME: ${{ env.APP_NAME }}
-      ENV: ${{ env.ENV_NAME }}
-      DEPLOY_TARGET: ${{ env.DEPLOY_TARGET }}
-      DEPLOY_TARGET_TYPE: ${{ env.DEPLOY_TARGET_TYPE }}
-      #NEXUS_USERNAME: {{ secrets.NEXUS_USERNAME }}
-      #NEXUS_PASSWORD: {{ secrets.NEXUS_PASSWORD }}
-      #PLATFORM_USERNAME: {{ secrets.PLATFORM_USERNAME }}
-      #PLATFORM_PASSWORD: {{ secrets.PLATFORM_PASSWORD }}
-      #CONNECTED_APP_CLIENT_ID: {{ secrets.PLATFORM_USERNAME }}
-      #CONNECTED_APP_CLIENT_SECRET: {{ secrets.PLATFORM_PASSWORD }}
+      APP_NAME: $APP_NAME
+      ENV: $ENV_NAME 
+      DEPLOY_TARGET: $DEPLOY_TARGET
+      DEPLOY_TARGET_TYPE: $DEPLOY_TARGET_TYPE
     secrets: inherit
 
 
