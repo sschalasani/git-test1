@@ -9,10 +9,6 @@ on:
         description: 'Log level'     
         required: true
         default: 'warning'
-
-
-
-
 jobs:
   call-workflow-passing-data:
     uses: sschalasani/ci-cd-tools/.github/workflows/develop.yml@develop
@@ -22,12 +18,12 @@ jobs:
       ENV: {{ env.ENV_NAME }}
       DEPLOY_TARGET: {{ env.DEPLOY_TARGET }}
       DEPLOY_TARGET_TYPE: {{ env.DEPLOY_TARGET_TYPE }}
-      NEXUS_USERNAME: {{ secrets.NEXUS_USERNAME }}
-      NEXUS_PASSWORD: {{ secrets.NEXUS_PASSWORD }}
-      PLATFORM_USERNAME: {{ secrets.PLATFORM_USERNAME }}
-      PLATFORM_PASSWORD: {{ secrets.PLATFORM_PASSWORD }}
-      CONNECTED_APP_CLIENT_ID: {{ secrets.PLATFORM_USERNAME }}
-      CONNECTED_APP_CLIENT_SECRET: {{ secrets.PLATFORM_PASSWORD }}
+      #NEXUS_USERNAME: {{ secrets.NEXUS_USERNAME }}
+      #NEXUS_PASSWORD: {{ secrets.NEXUS_PASSWORD }}
+      #PLATFORM_USERNAME: {{ secrets.PLATFORM_USERNAME }}
+      #PLATFORM_PASSWORD: {{ secrets.PLATFORM_PASSWORD }}
+      #CONNECTED_APP_CLIENT_ID: {{ secrets.PLATFORM_USERNAME }}
+      #CONNECTED_APP_CLIENT_SECRET: {{ secrets.PLATFORM_PASSWORD }}
     secrets: inherit
 
 
