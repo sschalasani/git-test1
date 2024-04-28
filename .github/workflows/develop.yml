@@ -9,21 +9,16 @@ on:
         description: 'Log level'     
         required: true
         default: 'warning'
-env:
-   APP_NAME: ${{ vars.APP_NAME }}
-   ENV: ${{ vars.ENV_NAME }}
-   DEPLOY_TARGET: ${{ vars.DEPLOY_TARGET }}
-   DEPLOY_TARGET_TYPE: ${{ vars.DEPLOY_TARGET_TYPE }}
 jobs:
   job1:
     steps:
     - name: Set up secret file
       run: |
         echo "Step1"
-        echo $APP_NAME
-        echo $ENV_NAME
-        echo $DEPLOY_TARGET
-        echo $DEPLOY_TARGET_TYPE
+        echo ${{ vars.APP_NAME }}
+        echo ${{ vars.ENV_NAME }}
+        echo ${{ vars.DEPLOY_TARGET }}
+        echo ${{ vars.DEPLOY_TARGET_TYPE }}
 
 #  call-workflow-passing-data:
 #    uses: sschalasani/ci-cd-tools/.github/workflows/develop.yml@develop
