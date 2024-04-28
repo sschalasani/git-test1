@@ -15,6 +15,9 @@ jobs:
   debug:
     name: Debug
     runs-on: ubuntu-latest
+    environment: 
+      name: DEV
+   
 
     steps:
     - name: Check out code
