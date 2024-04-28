@@ -28,7 +28,7 @@ jobs:
     with:
       config-path: ".github/labeler.yml"
       APP_NAME: ${{ vars.APP_NAME }}
-      ENV: ${{ vars.ENV_NAME  }}
+      ENV_NAME: ${{ vars.ENV_NAME  }}
       DEPLOY_TARGET: ${{ vars.DEPLOY_TARGET }}
       DEPLOY_TARGET_TYPE: ${{ vars.DEPLOY_TARGET_TYPE }}
     secrets: inherit
