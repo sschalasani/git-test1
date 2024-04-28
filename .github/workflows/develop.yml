@@ -14,7 +14,7 @@ on:
 
 jobs:
   call-workflow-passing-data:
-    uses: sateeshc/ci-cd-tools/.github/workflows/develop.yml@develop
+    uses: sschalasani/ci-cd-tools/.github/workflows/develop.yml@develop
     with:
       config-path: ".github/labeler.yml"
       APP_NAME: {{ env.APP_NAME }}
