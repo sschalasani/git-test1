@@ -10,20 +10,30 @@ on:
         required: true
         default: 'warning'
 env:
-      APP_NAME: ${{ env.APP_NAME }}
-      ENV: ${{ env.ENV_NAME }}
-      DEPLOY_TARGET: ${{ env.DEPLOY_TARGET }}
-      DEPLOY_TARGET_TYPE: ${{ env.DEPLOY_TARGET_TYPE }}
+   APP_NAME: ${{ env.APP_NAME }}
+   ENV: ${{ env.ENV_NAME }}
+   DEPLOY_TARGET: ${{ env.DEPLOY_TARGET }}
+   DEPLOY_TARGET_TYPE: ${{ env.DEPLOY_TARGET_TYPE }}
 jobs:
-  call-workflow-passing-data:
-    uses: sschalasani/ci-cd-tools/.github/workflows/develop.yml@develop
-    with:
-      config-path: ".github/labeler.yml"
-      APP_NAME: $APP_NAME
-      ENV: $ENV_NAME 
-      DEPLOY_TARGET: $DEPLOY_TARGET
-      DEPLOY_TARGET_TYPE: $DEPLOY_TARGET_TYPE
-    secrets: inherit
+  job1:
+    steps:
+    - name: Set up secret file
+      run: |
+        echo "Step1"
+        echo $APP_NAME
+        echo $ENV_NAME
+        echo $DEPLOY_TARGET
+        echo $DEPLOY_TARGET_TYPE
+
+#  call-workflow-passing-data:
+#    uses: sschalasani/ci-cd-tools/.github/workflows/develop.yml@develop
+#    with:
+#      config-path: ".github/labeler.yml"
+#      APP_NAME: $APP_NAME
+#      ENV: $ENV_NAME 
+#      DEPLOY_TARGET: $DEPLOY_TARGET
+#      DEPLOY_TARGET_TYPE: $DEPLOY_TARGET_TYPE
+#    secrets: inherit
 
 
 
