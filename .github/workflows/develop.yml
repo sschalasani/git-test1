@@ -10,7 +10,6 @@ on:
         required: true
         default: 'warning'
 
-  
 
 jobs:
   call-workflow-passing-data:
