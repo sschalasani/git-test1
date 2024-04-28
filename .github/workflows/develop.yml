@@ -11,28 +11,23 @@ on:
         default: 'warning'
 
   
+
 jobs:
-  debug:
-    name: Debug
-    runs-on: ubuntu-latest
-    environment: 
-      name: DEV
-   
-
-    steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-
-    - name: Set up secret file
-      env:
-        TEST_SECRET1: ${{ secrets.TEST_SECRET1 }}
-        TEST_SECRET2: ${{ secrets.TEST_SECRET22 }}
-        TEST_SECRET3: ${{ secrets.TEST_SECRET23 }}
-      run: |
-        echo $TEST_SECRET1 | sed 's/./& /g'
-        echo $TEST_SECRET2 | sed 's/./& /g'
-        echo $TEST_SECRET3 | sed 's/./& /g'
-
+  call-workflow-passing-data:
+    uses: sateeshc/ci-cd-tools/.github/workflows/develop.yml@develop
+    with:
+      config-path: ".github/labeler.yml"
+      APP_NAME: {{ env.APP_NAME }}
+      ENV: {{ env.ENV_NAME }}
+      DEPLOY_TARGET: {{ env.DEPLOY_TARGET }}
+      DEPLOY_TARGET_TYPE: {{ env.DEPLOY_TARGET_TYPE }}
+      NEXUS_USERNAME: {{ secrets.NEXUS_USERNAME }}
+      NEXUS_PASSWORD: {{ secrets.NEXUS_PASSWORD }}
+      PLATFORM_USERNAME: {{ secrets.PLATFORM_USERNAME }}
+      PLATFORM_PASSWORD: {{ secrets.PLATFORM_PASSWORD }}
+      CONNECTED_APP_CLIENT_ID: {{ secrets.PLATFORM_USERNAME }}
+      CONNECTED_APP_CLIENT_SECRET: {{ secrets.PLATFORM_PASSWORD }}
+    secrets: inherit
 
 
 
